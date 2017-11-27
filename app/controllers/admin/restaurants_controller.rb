@@ -1,7 +1,7 @@
 class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin
-  before_action :set_restaurant, only: [:show, :edit, :update]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -28,11 +28,18 @@ class Admin::RestaurantsController < ApplicationController
   def update
     if @restaurant.update_attributes(restaurant_params)    
       flash[:notice] = "restaurant was scuccessfully updated"
-      redirect_to admin_restaurants_path  
+      redirect_to admin_restaurant_path(@restaurant)  
     else
       flash.now[:alert] ="reastaurant was failed to update"
       render :edit
     end
+  end
+
+
+  def destroy
+    @restaurant.destroy
+    flash[:notice] = "estaurant was deleted!"
+    redirect_to admin_restaurants_path       
   end
 
   private
