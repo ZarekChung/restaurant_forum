@@ -1,0 +1,35 @@
+<div>
+    <table>
+        <tr>
+            <td>Name :</td>
+            <td>
+                <%= @restaurant.name %>
+            </td>
+        </tr>
+        <tr>
+            <td>tel :</td>
+            <td>
+                <%= @restaurant.tel  %>
+            </td>
+        </tr>
+        <tr>
+            <td>Adress :</td>
+            <td>
+                <%= @restaurant.address  %>
+            </td>
+        </tr>
+        <tr>
+            <td>Ppening hours :</td>
+            <td>
+                <%= @restaurant.opening_hours  %>
+            </td>
+        </tr>
+        <tr>
+            <td>Description :</td>
+            <td>
+                <%= simple_format(@restaurant.description) %>
+            </td>
+        </tr>
+    </table>
+    <%= link_to "back to index", admin_restaurants_path %>
+</div>
