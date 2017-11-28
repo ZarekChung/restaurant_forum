@@ -6,7 +6,7 @@ class Admin::RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.page(params[:page]).per(10)
-    
+    session[:page] = params[:page]
   end
 
   def new
