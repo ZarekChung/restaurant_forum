@@ -30,6 +30,14 @@
                 <%= simple_format(@restaurant.description) %>
             </td>
         </tr>
+        <tr>
+            <td>
+                Photo:
+            </td>
+            <td>
+                <%= image_tag @restaurant.image,width:'600px' if @restaurant.image?%>
+            </td>
+        </tr>
     </table>
     <%= link_to "back to index", admin_restaurants_path %>
 </div>
