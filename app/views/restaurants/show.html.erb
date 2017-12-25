@@ -1,0 +1,45 @@
+
+<div>
+[<%= @restaurant.category.name %>]
+    <table>
+        <tr>
+            <td>Name :</td>
+            <td>
+                <%= @restaurant.name %>
+            </td>
+        </tr>
+        <tr>
+            <td>tel :</td>
+            <td>
+                <%= @restaurant.tel  %>
+            </td>
+        </tr>
+        <tr>
+            <td>Adress :</td>
+            <td>
+                <%= @restaurant.address  %>
+            </td>
+        </tr>
+        <tr>
+            <td>Ppening hours :</td>
+            <td>
+                <%= @restaurant.opening_hours  %>
+            </td>
+        </tr>
+        <tr>
+            <td>Description :</td>
+            <td>
+                <%= simple_format(@restaurant.description) %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Photo:
+            </td>
+            <td>
+                <%= image_tag @restaurant.image,width:'600px' if @restaurant.image?%>
+            </td>
+        </tr>
+    </table>
+    <%= link_to "back to index", admin_restaurants_path(page: session[:page]) %>
+</div>
