@@ -43,6 +43,19 @@
     </table>
     <%= link_to "back to index", admin_restaurants_path(page: session[:page]) %>
 </div>
+<div>
+    <% @restaurant.comments.each do |comment| %>
+    <div>
+        <h4><%= comment.user.email.split("@")[0].to_s %></h4>
+        <p><%= simple_format comment.content %></p> 
+      
+        <p class="text_muted">
+            <em><%=  time_ago_in_words(comment.created_at.time) + ' ago' %></em>
+        </p>      
+    </div>
+    <hr>
+    <% end %>
+</div>
 <div class="container">
     <div class="row">
         <div class="form-group">
