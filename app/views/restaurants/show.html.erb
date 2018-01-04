@@ -41,7 +41,7 @@
             </td>
         </tr>
     </table>
-    <%= link_to "back to index", admin_restaurants_path(page: session[:page]) %>
+    <%= link_to "back to index", restaurants_path(page: session[:page]) %>
 </div>
 <div>
     <% @restaurant.comments.each do |comment| %>

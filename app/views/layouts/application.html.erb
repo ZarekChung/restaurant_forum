@@ -13,6 +13,7 @@
     <p class="alert"><%= alert %></p>
     <% if current_user %>
   Hi, <%= current_user.email %>
+    <%= link_to('Info', user_path(current_user.id)) %> |
     <%= link_to('logout', destroy_user_session_path, method: :delete) %> |
     <%= link_to('modify', edit_user_registration_path) %>
   <% else %>

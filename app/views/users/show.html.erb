@@ -1,0 +1,33 @@
+<div calss="container">
+    <% @users.each do |users| %>
+    <div>
+        <% if users.errors.any? %>
+         <h2>We have some erroes here !</h2>
+         <ul>
+             <% users.errors.full_messages.each do |msg| %>
+                 <li>
+                     <%= msg %>
+                 </li>
+                 <% end %>
+         </ul>
+         <% end %>
+    </div>
+    <div>
+        [<%= users.email %>]
+    </div>
+    <div>
+        <%= users.name %>
+    </div>
+    <div>
+      <%= simple_format(users.intro) %>
+      <div>
+          <div>
+              <%= image_tag users.avatar,width:'300px' if users.avatar?%>
+          </div>
+          <div>
+              <%= link_to "edit", edit_user_path(current_user.id) if users.id == current_user.id %>
+                  <% end %>
+                      <%= link_to "back to index", restaurants_path(page: session[:page]) %>
+          </div>
+      </div>
+    </div>
