@@ -1,33 +1,51 @@
 <div calss="container">
-    <% @users.each do |users| %>
-      <div>
-          <% if users.errors.any? %>
-           <h2>We have some erroes here !</h2>
-           <ul>
-               <% users.errors.full_messages.each do |msg| %>
-                   <li>
-                       <%= msg %>
-                   </li>
-                   <% end %>
-           </ul>
-           <% end %>
-      </div>
-      <div>
-          [<%= users.email %>]
-          <%= link_to "edit", edit_user_path(current_user.id) if users.id == current_user.id %>
-      </div>
-      <div>
-          <%= users.name %>
-      </div>
-      <div>
-        <%= simple_format(users.intro) %>
-        <div>
-            <div>
-                <%= image_tag users.avatar,width:'300px' if users.avatar?%>
-            </div>
+  <% @users.each do |users| %>
+    <div>
+      <% if users.errors.any? %>
+          <h2>We have some erroes here !</h2>
+          <ul>
+            <% users.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
       <% end %>
-          <div>
-                <%= link_to "back to index", restaurants_path(page: session[:page]) %>
-          </div>
-      </div>
     </div>
+    <div>
+        [<%= users.email %>]
+        <%= link_to "edit", edit_user_path(current_user.id) if users.id == current_user.id %>
+    </div>
+    <div>
+        <%= users.name %>
+    </div>
+    <div>
+        <%= simple_format(users.intro) %>
+    </div>
+    <div>
+        <%= image_tag users.avatar,width:'300px' if users.avatar?%>
+    </div>
+     <% if users.id == current_user.id  %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= users.name %>評論過的餐廳</h3>
+      </div>
+        <div class="panel-body">       
+        <% @commented_restaurants.each do |restaurant| %>
+         <div class="my-restaurant" >
+          <%= link_to restaurant_path(restaurant) do %>
+            <div class="my-restaurant-img">
+            <%= image_tag restaurant.image,width:'200px' if restaurant.image?%>
+            </div>
+            <h5> <%= restaurant.name %></h5>
+         
+          </div> 
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+     <% end %>
+  <% end %>
+  <div>
+      <%= link_to "back to index", restaurants_path(page: session[:page]) %>
+  </div>
+  
+</div>

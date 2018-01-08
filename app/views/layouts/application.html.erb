@@ -12,13 +12,26 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if current_user %>
-  Hi, <%= current_user.email %>
-    <%= link_to('Info', user_path(current_user.id)) %> |
+    <div class="container">
+    <% if current_user.admin? %>
+
+      
+
+       <%=  link_to_unless_current(sanitize('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>後台'), admin_root_path) do 
+          icon_link_to('前台', root_path,"log-in") 
+       end 
+       %>
+    <% else %>
+      <%= link_to('Home', root_path)%>
+    <% end %>
+    Hi, <%= current_user.email %>
+    <%= link_to('Profile', user_path(current_user.id)) %> |
     <%= link_to('logout', destroy_user_session_path, method: :delete) %> |
     <%= link_to('modify', edit_user_registration_path) %>
   <% else %>
     <%= link_to('singup', new_user_registration_path) %> |
     <%= link_to('login', new_user_session_path) %>
+    </div>
  <% end %>
     <%= yield %>
   </body>

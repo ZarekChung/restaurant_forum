@@ -2,7 +2,13 @@ class UsersController < ApplicationController
   before_action :set_restaurant, only: [:edit, :update]
   
   def show
-    @users = User.all 
+    @users = User.all
+    @commented_restaurants = User.find(params[:id]).restaurants.uniq 
+
+   #if params[:id] == current_user.id
+    #@commented_restaurants = User.find(params[:id]).restaurants 
+    #@current_user = User.find(params[:id])
+    #end
   end
  
 

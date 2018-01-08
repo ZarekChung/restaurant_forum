@@ -1,6 +1,7 @@
 namespace :make do
   task fake_restaurant: :environment do
   Restaurant.destroy_all
+  
 
   500.times do |i|
     Restaurant.create!(name: FFaker::Name.first_name,opening_hours: FFaker::Time.datetime,
@@ -16,11 +17,13 @@ end
 
   
   task fake_user: :environment do
+    User.destroy_all
       20.times do |i|
-      #user_name = FFaker::Name.first_name
+      user_name = FFaker::Name.first_name
       User.create!(
-        email: "#{FFaker::Name.first_name}@example.com",
-        password: "1qaz2wsx"
+        email: "#{user_name}@example.com",
+        password: "1qaz2wsx",
+        name: "#{user_name}" 
       )  
       end
       puts "have created fake user"
@@ -29,6 +32,7 @@ end
 
 
   task fake_comment: :environment do
+    Comment.destroy_all
     Restaurant.all.each do |restaurant|
       3.times do |i|
       restaurant.comments.create!(
