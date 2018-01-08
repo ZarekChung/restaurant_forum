@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   #user 下有評論,就不能刪除(會拋出error)
-  has_many :comments, dependent: :restrict_with_exception
+  has_many :comments, dependent: :restrict_with_error
   has_many :restaurants, through: :comments
 
   mount_uploader :avatar, AvatarUploader

@@ -33,6 +33,25 @@
     <%= link_to('login', new_user_session_path) %>
     </div>
  <% end %>
+
+<div class ="container">
+<div class="row">
+<h1>restaurants web site</h1>
+<br>
+<!-- bootstrap components 的 Nav Tabs-->
+  <ul class="nav nav-tabs">
+  <li role="presentation" class="<%="active" if @page_tab == "Home" %>">
+    <%= link_to 'Home', root_path %>
+  <li role="presentation" class="<%="active" if @page_tab == "about" %>">
+    <%= link_to '最新資訊',feeds_restaurants_path %>
+  </li>
+</ul>
+
+</div>
+</div>
+<br>
+
+
     <%= yield %>
   </body>
 </html>
