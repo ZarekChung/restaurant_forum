@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   #user收藏很多餐廳,多對多
   has_many :favorites, dependent: :destroy
-  has_many :davorited_restaurants, through: :favorites, source: :restaurants
+  has_many :favorited_restaurants, through: :favorites, source: :restaurant
 
   mount_uploader :avatar, AvatarUploader
   def admin?
