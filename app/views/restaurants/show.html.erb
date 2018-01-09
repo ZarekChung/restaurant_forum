@@ -1,6 +1,9 @@
 
 <div>
-[<%= @restaurant.category.name %>]
+    <div>
+<h3>[<%= @restaurant.category.name %>] </h3>
+  <%= link_to 'Dashboard', dashboard_restaurant_path(@restaurant) , class: "btn btn-primary"%>
+</div>
     <table>
         <tr>
             <td>Name :</td>
