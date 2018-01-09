@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :restrict_with_error
   has_many :restaurants, through: :comments
 
+  #user收藏很多餐廳,多對多
+  has_many :favorites, dependent: :destroy
+  has_many :davorited_restaurants, through: :favorites, source: :restaurants
+
   mount_uploader :avatar, AvatarUploader
   def admin?
     self.role == "admin"
