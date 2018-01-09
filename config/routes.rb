@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     #include id
     member do
       get :dashboard
+      #create favorite routes
+      post :favorite
+      post :unfavorite
     end
 
     resources :comments, only: [:create, :destroy]
