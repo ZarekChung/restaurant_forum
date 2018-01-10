@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       #create favorite routes
       post :favorite
       post :unfavorite
+      post :like
+      post :unlike
     end
 
     resources :comments, only: [:create, :destroy]
