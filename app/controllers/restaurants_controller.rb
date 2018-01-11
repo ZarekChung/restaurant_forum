@@ -23,9 +23,11 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @restaurant.favorites.create!(user: current_user)
     #更新收藏數
-    @favorites_count = @restaurant.favorites_count;
-    @favorites_count = @favorites_count.blank? ? 1 : @favorites_count + 1
-    @restaurant.update_columns(favorites_count: @favorites_count)
+    #@favorites_count = @restaurant.favorites_count;
+    #@favorites_count = @favorites_count.blank? ? 1 : @favorites_count + 1
+    #@restaurant.update_columns(favorites_count: @favorites_count)
+    #透過counter_cache操作
+    @restaurant.count_favorites
     redirect_back(fallback_location: root_path)
   end
 
@@ -33,8 +35,10 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     favorite = Favorite.where(restaurant: @restaurant, user: current_user)
     favorite.destroy_all
-    @favorites_count = @restaurant.favorites_count - 1;
-    @restaurant.update_columns(favorites_count: @favorites_count)
+    #@favorites_count = @restaurant.favorites_count - 1;
+    #@restaurant.update_columns(favorites_count: @favorites_count)
+    #透過counter_cache操作
+    @restaurant.count_favorites
     redirect_back(fallback_location: root_path)
   end
 
