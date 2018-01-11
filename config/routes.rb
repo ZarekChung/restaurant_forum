@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     #自己設定rutes
     collection do
       get :feeds    
+      get :ranking
     end
     #include id
     member do
