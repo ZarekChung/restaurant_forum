@@ -24,7 +24,7 @@ class RestaurantsController < ApplicationController
     @restaurant.favorites.create!(user: current_user)
     #更新收藏數
     @favorites_count = @restaurant.favorites_count;
-    @favorites_count = @favorites_count.blank? ? 0 : @favorites_count + 1
+    @favorites_count = @favorites_count.blank? ? 1 : @favorites_count + 1
     @restaurant.update_columns(favorites_count: @favorites_count)
     redirect_back(fallback_location: root_path)
   end
@@ -52,7 +52,7 @@ class RestaurantsController < ApplicationController
   end
 
   def ranking
-    @restaurant = Restaurant.order(favorites_count: :desc).limit(10)
+    @restaurants = Restaurant.order(favorites_count: :desc).limit(10)
   end
   
   

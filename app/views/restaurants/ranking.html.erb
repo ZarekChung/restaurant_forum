@@ -1,0 +1,27 @@
+<% tab "top10" %>
+ 
+ <div class="container">
+     <div class="row">
+         <h1> TOP10 人氣餐廳</h1>
+         <hr>
+      <div class="col-md-12 ">
+         
+               <% @restaurants.each do |restaurant|%>
+                  <div>
+                    <%= image_tag restaurant.image %>
+                    <div> <h3><%= restaurant.name %>
+<span class="label label-default">收藏數 : <%= restaurant.favorites_count%></span>
+                      </h3>
+                      </div>
+                    <div>
+                    <%= link_to 'Show', restaurant_path(restaurant), class: "btn btn-primary"%>
+                    <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %> 
+                    </div>
+                    <p><%= truncate(restaurant.description,length:80) %></p>
+                    <hr>
+                  </div>
+               <% end %>
+           
+ </div>
+</div>
+</div>

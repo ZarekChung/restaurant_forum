@@ -45,6 +45,9 @@
   <li role="presentation" class="<%="active" if @page_tab == "about" %>">
     <%= link_to '最新資訊',feeds_restaurants_path %>
   </li>
+   <li role="presentation" class="<%="active" if @page_tab == "top10" %>">
+    <%= link_to 'Top10',ranking_restaurants_path %>
+  </li>
 </ul>
 
 </div>
