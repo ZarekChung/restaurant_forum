@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_restaurant, only: [:edit, :update]
   
+  def index
+    @users = User.all
+  end
+
   def show
     @users = User.all
     @commented_restaurants = User.find(params[:id]).restaurants.uniq 
