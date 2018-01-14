@@ -24,6 +24,7 @@
         <%= image_tag users.avatar,width:'300px' if users.avatar?%>
     </div>
      <% if users.id == current_user.id  %>
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><%= users.name %>評論過的餐廳</h3>
@@ -42,6 +43,59 @@
             <% end %>
         </div>
     </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= users.name %>收藏的餐廳</h3>
+      </div>
+        <div class="panel-body">       
+        <% @favorite_restaurants.each do |restaurant| %>
+         <div class="my-restaurant" >
+          <%= link_to restaurant_path(restaurant) do %>
+            <div class="my-restaurant-img">
+            <%= image_tag restaurant.image,width:'200px' if restaurant.image?%>
+            </div>
+            <h5> <%= restaurant.name %></h5>
+         
+          </div> 
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= users.name %> followings</h3>
+      </div>
+        <div class="panel-body">       
+        <% @followings.each do |follows_user| %>
+         <div class="my-restaurant" >
+          <%= link_to user_path(follows_user.id) do %>
+            <h5> <%= follows_user.name %></h5>
+         
+          </div> 
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= users.name %> followers </h3>
+      </div>
+        <div class="panel-body">       
+        <% @followers.each do |followers_user| %>
+         <div class="my-restaurant" >
+          <%= link_to user_path(followers_user.id) do %>
+            <h5> <%= followers_user.name %></h5>
+         
+          </div> 
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+
+
      <% end %>
   <% end %>
   <div>

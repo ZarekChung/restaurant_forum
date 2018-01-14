@@ -8,7 +8,9 @@ class UsersController < ApplicationController
   def show
     @users = User.all
     @commented_restaurants = User.find(params[:id]).restaurants.uniq 
-
+    @favorite_restaurants = User.find(params[:id]).favorited_restaurants.uniq
+    @followings = User.find(params[:id]).followings
+    @followers = User.find(params[:id]).followers
    #if params[:id] == current_user.id
     #@commented_restaurants = User.find(params[:id]).restaurants 
     #@current_user = User.find(params[:id])
