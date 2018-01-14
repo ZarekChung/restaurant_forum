@@ -2,7 +2,7 @@
    <% @users.each do |users| %>
      <li><%= users.name %>
         <%= link_to "Follow", followships_path(following_id: users.id), method: :post%>
-
+        <%= link_to "Unfollow", followship_path(users.id), method: :delete%>
      </li>
     <% end %>
   </ul>
