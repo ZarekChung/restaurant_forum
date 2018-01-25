@@ -3,6 +3,7 @@
    <% @users.each do |users| %>
      <li><%= users.name %>
     <%= render partial: "shared/follow", locals: {users: users}%>
+    <%= render partial: "shared/friends", locals: {users: users}%>
      </li>
     <% end %>
   </ul>

@@ -1,0 +1,29 @@
+<div calss="container">
+ <% user_friends = @user_friends%>
+   
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= current_user.name %>  的好友 </h3>
+      </div>
+        <div class="panel-body">       
+        <% user_friends.each do |freind_user| %>
+         <div class="my-restaurant" >
+          <%= link_to user_path(freind_user.id) do %>
+            <h5> <%= freind_user.name %></h5>
+         
+          </div> 
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+
+  
+  
+   
+  
+  <div>
+      <%= link_to "back to index", restaurants_path(page: session[:page]) %>
+  </div>
+  
+</div>
